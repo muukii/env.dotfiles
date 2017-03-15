@@ -3,7 +3,7 @@
 echo $PWD
 
 TARGET=$HOME
-IGNOREFILES=('.hgrc' '.DS_Store', '.gitignore')
+IGNOREFILES=('..', '.hgrc' '.DS_Store', '.gitignore')
 
 if [[ $all_flag == 1 ]]; then
   ignore_len=1
