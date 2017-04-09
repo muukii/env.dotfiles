@@ -1,10 +1,5 @@
 # vim:set fdm=marker:
-
-# zplug
-# source ~/.zplug/init.zsh
-# zplug "sorin-ionescu/prezto"
-# zplug load --verbose 
-#
+# vim:set ts=8 sts=2 sw=2 tw=0:
 
 export XDG_CONFIG_HOME="$HOME/.config"
 # source common shell run command
@@ -67,20 +62,25 @@ setopt prompt_cr
 setopt prompt_sp
 
 DEFAULT='❯'
-SUCCESS='❯'
-ERROR='✕'
+SUCCESS='$'
+ERROR='$'
 
 APPEND=''
 if [ -n "${DOCKER_CONTAINER}" ]; then
-	APPEND='Attached '
+  APPEND='Attached '
 fi
 # PROMPT1
 PS1="%{[0m%}
 %{[37m%}\$(parse_git_status)%{[0m%}
-%{[31m%}${APPEND}[32m%}${DEFAULT} %n ${DEFAULT} %m ${DEFAULT} %{[33m%}%~%{[0m%}
+%{[31m%}${APPEND}%}
+%{[31m%}${DEFAULT} [%*]%}
+%{[33m%}${DEFAULT} %n@%M%{[0m%}
+%{[33m%}${DEFAULT} %~%{[0m%}
 %(?|%{[36m%}${SUCCESS}|%{[31m%}${ERROR})%{[35m%}\$(parse_git_branch) %{[0m%}"
 
-# PROMPT2
+#%{${DEFAULT} %{[33m%}%~%{[0m%}
+
+# PROMPT3
 PS2="%_> "
 
 # PROMPT for correct
@@ -151,14 +151,14 @@ setopt globdots
 
 brew=`which brew 2>&1`
 if [[ $? == 0 ]]; then
-        . `brew --prefix`/etc/profile.d/z.sh
+  . `brew --prefix`/etc/profile.d/z.sh
 fi
 function precmd ()
 {
-        brew=`which brew 2>&1`
-        if [[ $? == 0 ]]; then
-                _z --add "$(pwd -P)"
-        fi
+  brew=`which brew 2>&1`
+  if [[ $? == 0 ]]; then
+    _z --add "$(pwd -P)"
+  fi
 }
 
 
@@ -176,9 +176,6 @@ alias dl='docker ps -l -q'
 alias da='docker ps -a'
 alias dat='docker attach `dl`'
 
-#Hub
-eval "$(hub alias -s)"
-
 ## bear
 alias bear='~/dotfiles/scripts/bear.swift'
 
@@ -187,57 +184,23 @@ echo $fpath
 
 ## xcode
 function xcode() {
-    xcworkspace=$(ls | grep --color=never .xcworkspace | head -1)
-    xcodeproj=$(ls | grep --color=never .xcodeproj | head -1)
-    xcode=${$(xcode-select -p)%/*/*}
-    if [[ -n ${xcworkspace} ]]; then
-        echo "Open ${xcworkspace}"
-        open -a ${xcode} ${xcworkspace}
-    elif [[ -n ${xcodeproj} ]]; then
-        echo "Open ${xcodeproj}"
-        open -a ${xcode} ${xcodeproj}
-    else
-        echo "Not found Xcode files"
-    fi
-}
-
-## peco
-function ch() {
-	git ch `git ba | peco --layout bottom-up --prompt "Git Branch" | sed 's|remotes/origin/||'`
-}
-function zz() {
-  which peco z > /dev/null
-  if [ $? -ne 0 ]; then
-    echo "Please install peco and z"
-    return 1
-  fi
-  local res=$(z | sort -rn | cut -c 12- | peco --layout bottom-up --prompt "Dir")
-  if [ -n "$res" ]; then
-    BUFFER+="cd '$res'"
-    zle accept-line
+  xcworkspace=$(ls | grep --color=never .xcworkspace | head -1)
+  xcodeproj=$(ls | grep --color=never .xcodeproj | head -1)
+  xcode=${$(xcode-select -p)%/*/*}
+  if [[ -n ${xcworkspace} ]]; then
+    echo "Open ${xcworkspace}"
+    open -a ${xcode} ${xcworkspace}
+  elif [[ -n ${xcodeproj} ]]; then
+    echo "Open ${xcodeproj}"
+    open -a ${xcode} ${xcodeproj}
   else
-    return 1
+    echo "Not found Xcode files"
   fi
 }
-zle -N zz
-bindkey '^z' zz
 
-function incremental_mdfind() {
-    cd "$(mdfind -onlyin ./ 'kMDItemContentType == "public.folder" || kMDItemFSNodeCount > 0' | sort -r | peco --layout bottom-up --prompt "Dir mdfind" --query="$*")"
-    zle accept-line
+function ch() {
+  git ch `git ba | fzf | sed 's|remotes/origin/||'`
 }
-zle -N incremental_mdfind
-bindkey '^t' incremental_mdfind
-
-fuction peco-ghq() {
-    ghq look $(ghq list | peco)
-}
-
-## anyframe
-#fpath=($HOME/.zsh/anyframe(N-/) $fpath)
-#autoload -Uz anyframe-init
-#anyframe-init
-#
-#
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

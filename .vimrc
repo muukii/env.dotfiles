@@ -2,13 +2,13 @@
 set nocompatible
 filetype off
 set rtp+=~/.vim/vundle.git
+set rtp+=~/.fzf
 call vundle#rc()
 
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'kien/ctrlp.vim'
 Plugin 'thinca/vim-quickrun'
 Plugin 'toyamarinyon/vim-swift'
 Plugin 'jonathanfilip/vim-lucius'
@@ -27,7 +27,7 @@ Plugin 'kamwitsta/nordisk'
 Plugin 'dunckr/vim-monokai-soda'
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'tpope/vim-fugitive'
-Plugin 'junegunn/fzf.vim'
+Plugin 'ekalinin/Dockerfile.vim'
 
 filetype plugin indent on
 
@@ -100,7 +100,7 @@ imap <C-c> <ESC>
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 " ctrl-p
-let g:ctrlp_map = '<c-p>'
+nnoremap <silent><C-p> :FZF<CR>
 
 " Syntax
 au BufRead,BufNewFile *.md set filetype=markdown

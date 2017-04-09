@@ -2,7 +2,7 @@
 #
 # File:        .shrc.common
 # Maintainer:  Shintaro Kaneko <kaneshin0120@gmail.com>
-# Last Change: 06-Feb-2017.
+# Last Change: 08-Apr-2017.
 
 export LANG=en_US.UTF-8
 
@@ -57,6 +57,7 @@ export PATH=$HOME/.pyenv/shims:$HOME/.pyenv/bin:$PATH
 
 # go version manager
 export GOPATH="$HOME/develop"   
+export GOBIN="$GOPATH/bin"
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
