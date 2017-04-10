@@ -27,27 +27,6 @@ if [[ $? == 0 ]]; then
     alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 fi
 
-set_gitst()
-{
-    case $1 in
-    on )
-        GITST=1
-    ;;
-    off )
-        GITST=0
-    ;;
-    esac
-}
-
-set_gitst on
-alias gitst='set_gitst'
-parse_git_status()
-{
-    if [[ $GITST != 0 ]]; then
-        git status -s 2> /dev/null
-    fi
-}
-
 parse_git_branch()
 {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
@@ -56,7 +35,7 @@ parse_git_branch()
 export PATH=$HOME/.pyenv/shims:$HOME/.pyenv/bin:$PATH
 
 # go version manager
-export GOPATH="$HOME/develop"   
+export GOPATH="$HOME/develop"
 export GOBIN="$GOPATH/bin"
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"

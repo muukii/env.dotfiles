@@ -5,17 +5,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # source common shell run command
 source ~/.shrc.common
 
-# Powerline
-# powerline-daemon -q
-# . /Users/muukii/.pyenv/versions/3.5.2/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
-
 # use key map like emacs
 bindkey -e
 
-# history settings
-export HISTFILE=~/.zsh_history
-export HISTSIZE=10000
-export SAVEHIST=10000
 # append history when exit shell
 setopt append_history
 
@@ -61,31 +53,12 @@ setopt prompt_cr
 # visible CR when output CR by prompt_cr
 setopt prompt_sp
 
-DEFAULT='❯'
-SUCCESS='$'
-ERROR='$'
-
-APPEND=''
-if [ -n "${DOCKER_CONTAINER}" ]; then
-  APPEND='Attached '
+# load $HOME/.zsh/*
+if [ -d $HOME/.zsh ]; then
+  for i in `ls -1 $(readlink .zsh)`; do
+    src=$HOME/.zsh/$i; [ -f $src ] && . $src
+  done
 fi
-# PROMPT1
-PS1="%{[0m%}
-%{[37m%}\$(parse_git_status)%{[0m%}
-%{[31m%}${APPEND}%}
-%{[31m%}${DEFAULT} [%*]%}
-%{[33m%}${DEFAULT} %n@%M%{[0m%}
-%{[33m%}${DEFAULT} %~%{[0m%}
-%(?|%{[36m%}${SUCCESS}|%{[31m%}${ERROR})%{[35m%}\$(parse_git_branch) %{[0m%}"
-
-#%{${DEFAULT} %{[33m%}%~%{[0m%}
-
-# PROMPT3
-PS2="%_> "
-
-# PROMPT for correct
-SPROMPT="zsh: Did you mean: %{[4m[31m%}%r%{[14m[0m%} [nyae]? "
-
 
 # completion settings
 autoload -Uz compinit
@@ -161,46 +134,32 @@ function precmd ()
   fi
 }
 
-
-# gi
-function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
-
 #local
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-# alias
-alias ls='ls -a -G'
+DEFAULT='❯'
+SUCCESS='$'
+ERROR='$'
 
-## docker
-alias dl='docker ps -l -q'
-alias da='docker ps -a'
-alias dat='docker attach `dl`'
+APPEND=''
+if [ -n "${ON_DOCKER}" ]; then
+  APPEND='Attached '
+fi
+# PROMPT1
+PS1="%{[0m%}
+%{[37m%}\$(git_status)%{[0m%}
+%{[31m%}${APPEND}%}
+%{[31m%}${DEFAULT} [%*]%}
+%{[33m%}${DEFAULT} %n@%M%{[0m%}
+%{[33m%}${DEFAULT} %~%{[0m%}
+%(?|%{[36m%}${SUCCESS}|%{[31m%}${ERROR})%{[35m%}\$(parse_git_branch) %{[0m%}"
 
-## bear
-alias bear='~/dotfiles/scripts/bear.swift'
+#%{${DEFAULT} %{[33m%}%~%{[0m%}
 
-# Check $fpath
-echo $fpath
+# PROMPT3
+PS2="%_> "
 
-## xcode
-function xcode() {
-  xcworkspace=$(ls | grep --color=never .xcworkspace | head -1)
-  xcodeproj=$(ls | grep --color=never .xcodeproj | head -1)
-  xcode=${$(xcode-select -p)%/*/*}
-  if [[ -n ${xcworkspace} ]]; then
-    echo "Open ${xcworkspace}"
-    open -a ${xcode} ${xcworkspace}
-  elif [[ -n ${xcodeproj} ]]; then
-    echo "Open ${xcodeproj}"
-    open -a ${xcode} ${xcodeproj}
-  else
-    echo "Not found Xcode files"
-  fi
-}
-
-function ch() {
-  git ch `git ba | fzf | sed 's|remotes/origin/||'`
-}
+# PROMPT for correct
+SPROMPT="zsh: Did you mean: %{[4m[31m%}%r%{[14m[0m%} [nyae]? "
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
