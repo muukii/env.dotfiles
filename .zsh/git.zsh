@@ -10,6 +10,6 @@ function git_status() {
   echo $local_status
 }
 
-function parse_git_branch() {}
+function parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
 }

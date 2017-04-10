@@ -55,7 +55,7 @@ setopt prompt_sp
 
 # load $HOME/.zsh/*
 if [ -d $HOME/.zsh ]; then
-  for i in `ls -1 $(readlink .zsh)`; do
+  for i in `ls -1 $HOME/.zsh`; do
     src=$HOME/.zsh/$i; [ -f $src ] && . $src
   done
 fi
