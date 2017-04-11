@@ -1,6 +1,3 @@
-# alias
-alias ls='ls -a -G'
-
 ## docker
 alias dl='docker ps -l -q'
 alias da='docker ps -a'
@@ -10,9 +7,9 @@ alias dat='docker attach `dl`'
 alias bear='~/dotfiles/scripts/bear.swift'
 
 alias ce='cd ../'
-alias ls='ls -F'
-alias la='ls -a'
-alias ll='ls -la'
+alias ls='ls -F -G'
+alias la='ls -a -G'
+alias ll='ls -la -G'
 alias sl="ls"
 
 alias grep='grep --color=always'

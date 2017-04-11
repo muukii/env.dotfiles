@@ -2,8 +2,6 @@
 # vim:set ts=8 sts=2 sw=2 tw=0:
 
 export XDG_CONFIG_HOME="$HOME/.config"
-# source common shell run command
-source ~/.shrc.common
 
 # use key map like emacs
 bindkey -e
@@ -56,6 +54,7 @@ setopt prompt_sp
 # load $HOME/.zsh/*
 if [ -d $HOME/.zsh ]; then
   for i in `ls -1 $HOME/.zsh`; do
+    echo "Load $i"
     src=$HOME/.zsh/$i; [ -f $src ] && . $src
   done
 fi
@@ -137,7 +136,7 @@ function precmd ()
 #local
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-DEFAULT='❯'
+DEFAULT='❯❯❯'
 SUCCESS='$'
 ERROR='$'
 
