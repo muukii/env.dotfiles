@@ -1,7 +1,3 @@
-function ch() {
-  git ch `git ba | fzf | sed 's|remotes/origin/||'`
-}
-
 # gi
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 

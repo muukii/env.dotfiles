@@ -19,6 +19,12 @@ alias egrep='egrep --color=always'
 
 alias less='less -R'
 
+# haskell-sktack
+alias ghc="stack ghc"
+alias ghci="stack ghci"
+alias runghc="stack runghc"
+alias runhaskell="stack runghc"
+
 # alias for vim
 alias vi='vim -u $HOME/.virc'
 sw_vers=`which sw_vers 2>&1`

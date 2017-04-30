@@ -99,8 +99,11 @@ imap <C-c> <ESC>
 " NERDTree
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
-" ctrl-p
+" fzf
 nnoremap <silent><C-p> :FZF<CR>
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
 
 " Syntax
 au BufRead,BufNewFile *.md set filetype=markdown

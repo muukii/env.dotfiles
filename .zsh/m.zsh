@@ -1,49 +1,78 @@
+# m version
+local version="0.1.0"
+
+m_help() {
+  echo "
+  Hi, I'm m.sh
+  
+  ${version}
+
+  ch           git checkout with fzf
+  w            git worktree with fzf
+  swift        Launch Swift Development for Ubuntu on Docker
+  urlencode    URL encode <input>
+  urldecode    URL decode <input>
+
+  edit         Edit m
+  "
+}
+
+m_w() {
+  cd `git worktree list | fzf | cut -d " " -f 1`
+}
+
+m_check_required_commands() {
+  if [ -nz $(which fzf) ]; then
+    echo "fzf not found."
+  fi
+}
+
+m_ch() {
+  git checkout `git branch -a | fzf | sed 's#remotes/origin/##'`
+}
+
+m_edit() {
+  vim ${HOME}/.zsh/m.zsh
+}
+
+m_docker_swift_on_curren_directory() {
+  docker run --rm -it --name swift -v $PWD:/local/dev swift:3.1 /bin/bash
+}
+
+m_url_decode() {
+  echo $1 | nkf -w --url-input
+}
+
+m_url_encode() {
+  echo $1 | nkf -WwMQ | tr = %
+}
 
 m() {
-  # m version
-  local version="0.1.0"
-
-  m_help() {
-    echo "
-    Hi! I'm m!
-    
-    ${version}
-    ch  git checkout with fzf
-    w   git worktree with fzf
-    "
-  }
-
-  m_w() {
-    cd `git worktree list | cut -d " " -f 1 | fzf`
-  }
-
-  m_check_required_commands() {
-    if [ -nz $(which fzf) ]; then
-      echo "fzf not found."
-    fi
-  }
-
-  m_ch() {
-    git checkout `git branch -a | fzf | sed 's#remotes/origin/##'`
-  }
-
-  run() {
-    local command="$1"
-    case "${command}" in
-      "" | "-h" | "--help" )
-        m_help
-        ;;
-      "ch" )
-        m_ch
-        ;;
-      "w" )
-        m_w
-        ;;
-      * )
-        echo "Command not found '$@'"
+  local command="$1"
+  case "${command}" in
+    "" | "-h" | "--help" )
+      m_help
       ;;
-    esac
-  }
-
-  run $1
+    "ch" )
+      m_ch
+      ;;
+    "w" )
+      m_w
+      ;;
+    "edit" )
+      m_edit
+      ;;
+    "swift" )
+      m_docker_swift_on_curren_directory
+      ;;
+    "urlencode" )
+      m_url_encode $2
+      ;;
+    "urldecode" )
+      m_url_decode $2
+      ;;
+    * )
+      echo "Command not found '$@'"
+    ;;
+  esac
 }
