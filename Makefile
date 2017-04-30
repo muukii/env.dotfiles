@@ -1,2 +1,2 @@
 install:
-	@bash dotfiles-install.sh
+	@bash install.sh
