@@ -5,7 +5,8 @@ set rtp+=~/.vim/vundle.git
 set rtp+=~/.fzf
 call vundle#rc()
 
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'plasticboy/vim-markdown'
@@ -18,7 +19,6 @@ Plugin 'mitsuse/autocomplete-swift'
 Plugin 'Shougo/NeoComplete'
 Plugin 'Keithbsmiley/swift.vim'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'cocopon/iceberg.vim'
 Plugin 'tomasr/molokai'
 Plugin 'scrooloose/nerdtree'
@@ -33,6 +33,9 @@ filetype plugin indent on
 
 filetype plugin on
 filetype indent on
+
+" Airline
+let g:airline_theme = 'molokai'
 
 " Syntax
 syntax enable
@@ -118,9 +121,6 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_color_change_percent = 3
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=236
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#262626 ctermbg=236
-autocmd VimEnter * :IndentGuidesEnable
 
 " quickrun
 let g:quickrun_config = {'*': {'split': ''}}

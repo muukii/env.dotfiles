@@ -110,7 +110,7 @@
 # cherry-pick (chpk)
     chpk = cherry-pick
 # util
-	wip = !git commit -m ':bowtie: WIP'
+	wip = !git commit -m ':zap: WIP'
     cleanup = !git commit -m ':sparkles: Cleanup'
     update = !git commit -m ':evergreen_tree: Update'
 # hub

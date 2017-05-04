@@ -36,7 +36,7 @@ m_edit() {
 }
 
 m_docker_swift_on_curren_directory() {
-  docker run --rm -it --name swift -v $PWD:/local/dev swift:3.1 /bin/bash
+  docker run --rm -it --name swift -v $PWD:/local/dev --workdir "/local/dev" swift:3.1 /bin/bash
 }
 
 m_url_decode() {
