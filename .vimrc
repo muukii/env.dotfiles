@@ -18,12 +18,9 @@ Plugin 'mitsuse/autocomplete-swift'
 Plugin 'Shougo/NeoComplete'
 Plugin 'Keithbsmiley/swift.vim'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'cocopon/iceberg.vim'
 Plugin 'tomasr/molokai'
 Plugin 'scrooloose/nerdtree'
 Plugin 'rhysd/vim-crystal'
-Plugin 'kamwitsta/nordisk'
-Plugin 'dunckr/vim-monokai-soda'
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ekalinin/Dockerfile.vim'
@@ -35,10 +32,18 @@ filetype indent on
 
 " Syntax
 syntax enable
-colorscheme base16-pop
-set background=dark
-set termguicolors
-set t_Co=256
+
+if has('termguicolors')
+    set termguicolors
+    colorscheme base16-navy
+    set background=dark
+    set t_Co=256
+else
+    colorscheme molokai
+    set t_Co=256
+    let g:molokai_original = 1
+    let g:rehash256 = 1
+endif
 
 set laststatus=2
 set showtabline=2
@@ -71,9 +76,6 @@ set backspace=indent,eol,start
 set listchars=eol:¬,tab:▸\ 
 set fillchars=vert:\ ,fold:\ ,diff:\
 
-" Remap code completion to Ctrl+Space
-inoremap <C-Space> <C-n>
-
 " like Emacs on InsertMode
 imap <C-k> <right><ESC><S-d>a
 imap <C-y> <ESC>pi
@@ -83,8 +85,8 @@ imap <C-a>  <Home>
 imap <C-e>  <End>
 imap <C-b>  <Left>
 imap <C-f>  <Right>
-inoremap <C-p>  <Up>
-inoremap <C-n>  <Down>
+imap <C-p>  <Up>
+imap <C-n>  <Down>
 
 " like Emacs on CommandMode
 cnoremap <C-a> <Home>
@@ -113,9 +115,6 @@ let g:vim_markdown_folding_disabled = 1
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile Fastfile set filetype=ruby
 au BufRead,BufNewFile Podfile set filetype=ruby
-
-let g:molokai_original = 1
-let g:rehash256 = 1
 
 " vim-indent-guides
 let g:indent_guides_guide_size = 1

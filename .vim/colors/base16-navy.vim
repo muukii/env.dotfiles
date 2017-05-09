@@ -2,7 +2,7 @@
 
 " base16-vim (https://github.com/chriskempson/base16-vim)
 " by Chris Kempson (http://chriskempson.com)
-" Pop scheme by muukii&lt;m@muukii.me&gt;
+" Navy scheme by muukii&lt;m@muukii.me&gt;
 
 " This enables the coresponding base16-shell script to run so that
 " :colorscheme works in terminals supported by base16-shell scripts
@@ -10,27 +10,27 @@
 "   let g:base16_shell_path=base16-builder/output/shell/
 if !has('gui_running')
   if exists("g:base16_shell_path")
-    execute "silent !/bin/sh ".g:base16_shell_path."/base16-pop.sh"
+    execute "silent !/bin/sh ".g:base16_shell_path."/base16-navy.sh"
   endif
 endif
 
 " GUI color definitions
 let s:gui00 = "15171C"
-let s:gui01 = "282a2e"
-let s:gui02 = "373b41"
-let s:gui03 = "969896"
-let s:gui04 = "b4b7b4"
-let s:gui05 = "c5c8c6"
-let s:gui06 = "e0e0e0"
+let s:gui01 = "232730"
+let s:gui02 = "3C4352"
+let s:gui03 = "555E74"
+let s:gui04 = "7A859E"
+let s:gui05 = "A7AEBF"
+let s:gui06 = "D5D8E0"
 let s:gui07 = "ffffff"
-let s:gui08 = "E64459"
-let s:gui09 = "F0603F"
-let s:gui0A = "fff09f"
+let s:gui08 = "ED5D6C"
+let s:gui09 = "6F7C96"
+let s:gui0A = "9DDCEE"
 let s:gui0B = "ffbc77"
-let s:gui0C = "87D0E7"
-let s:gui0D = "7B6E94"
-let s:gui0E = "b294bb"
-let s:gui0F = "a3685a"
+let s:gui0C = "8E83A5"
+let s:gui0D = "ED5D6C"
+let s:gui0E = "9DDCEE"
+let s:gui0F = "8E83A5"
 
 " Terminal color definitions
 let s:cterm00 = "00"
@@ -62,20 +62,20 @@ endif
 " Neovim terminal colours
 if has("nvim")
   let g:terminal_color_0 =  "#15171C"
-  let g:terminal_color_1 =  "#E64459"
+  let g:terminal_color_1 =  "#ED5D6C"
   let g:terminal_color_2 =  "#ffbc77"
-  let g:terminal_color_3 =  "#fff09f"
-  let g:terminal_color_4 =  "#7B6E94"
-  let g:terminal_color_5 =  "#b294bb"
-  let g:terminal_color_6 =  "#87D0E7"
-  let g:terminal_color_7 =  "#c5c8c6"
-  let g:terminal_color_8 =  "#969896"
-  let g:terminal_color_9 =  "#F0603F"
-  let g:terminal_color_10 = "#282a2e"
-  let g:terminal_color_11 = "#373b41"
-  let g:terminal_color_12 = "#b4b7b4"
-  let g:terminal_color_13 = "#e0e0e0"
-  let g:terminal_color_14 = "#a3685a"
+  let g:terminal_color_3 =  "#9DDCEE"
+  let g:terminal_color_4 =  "#ED5D6C"
+  let g:terminal_color_5 =  "#9DDCEE"
+  let g:terminal_color_6 =  "#8E83A5"
+  let g:terminal_color_7 =  "#A7AEBF"
+  let g:terminal_color_8 =  "#555E74"
+  let g:terminal_color_9 =  "#6F7C96"
+  let g:terminal_color_10 = "#232730"
+  let g:terminal_color_11 = "#3C4352"
+  let g:terminal_color_12 = "#7A859E"
+  let g:terminal_color_13 = "#D5D8E0"
+  let g:terminal_color_14 = "#8E83A5"
   let g:terminal_color_15 = "#ffffff"
   let g:terminal_color_background = g:terminal_color_0
   let g:terminal_color_foreground = g:terminal_color_7
@@ -88,7 +88,7 @@ endif
 " Theme setup
 hi clear
 syntax reset
-let g:colors_name = "base16-pop"
+let g:colors_name = "base16-navy"
 
 " Highlighting function
 fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
