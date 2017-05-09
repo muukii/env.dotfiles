@@ -5,15 +5,13 @@
 [merge]
     tool = vimdiff
 	ff = false
-[mergetool "mergepbx"]
-	cmd = mergepbx "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED"
 [core]
 	excludesfile = /Users/Muukii/.gitignore_global
 	editor = vim
-#[difftool "atom"]
-#	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 [color]
 	ui = auto
+    diff = auto
+    branch = auto
 [pull]
 	rebase = true
 [branch]
@@ -118,36 +116,19 @@
 	ksdiff = !git difftool -y -t Kaleidoscope
 # worktree
     w = !git worktree
-# scripts
-	findLargeFiles = !sh ~/dotfiles/scripts/git_find_big.sh
 [filter "media"]
 	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
-#driver for merging XCode project files
-[merge "mergepbx"]
-	name = XCode project files merger
-	driver = mergepbx %O %A %B
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 #driver for merging XCode project files
-[merge "mergepbx"]
-	name = XCode project files merger
-	driver = mergepbx %O %A %B
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
 	required = true
-[filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
 [mergetool]
 	keepBackup = true
-[commit]
-#	gpgsign = false
-[gpg]
-#   program = gpg
 [commit]
 	gpgsign = false
 [github]

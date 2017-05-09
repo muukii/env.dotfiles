@@ -2,6 +2,7 @@
 # vim:set ts=8 sts=2 sw=2 tw=0:
 
 export XDG_CONFIG_HOME="$HOME/.config"
+export TERM=xterm-256color
 
 # use key map like emacs
 bindkey -e
@@ -149,8 +150,8 @@ PS1="%{[0m%}
 %{[37m%}\$(git_status)%{[0m%}
 %{[31m%}${APPEND}%}
 %{[31m%}${DEFAULT} [%*]%}
-%{[33m%}${DEFAULT} %n@%M%{[0m%}
-%{[33m%}${DEFAULT} %~%{[0m%}
+%{[34m%}${DEFAULT} %n@%M%{[0m%}
+%{[34m%}${DEFAULT} %~%{[0m%}
 %(?|%{[36m%}${SUCCESS}|%{[31m%}${ERROR})%{[35m%}\$(parse_git_branch) %{[0m%}"
 
 #%{${DEFAULT} %{[33m%}%~%{[0m%}

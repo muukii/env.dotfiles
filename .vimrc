@@ -5,8 +5,7 @@ set rtp+=~/.vim/vundle.git
 set rtp+=~/.fzf
 call vundle#rc()
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'itchyny/lightline.vim'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'plasticboy/vim-markdown'
@@ -34,12 +33,12 @@ filetype plugin indent on
 filetype plugin on
 filetype indent on
 
-" Airline
-let g:airline_theme = 'molokai'
-
 " Syntax
 syntax enable
-colorscheme molokai 
+colorscheme base16-pop
+set background=dark
+set termguicolors
+set t_Co=256
 
 set laststatus=2
 set showtabline=2
@@ -71,7 +70,9 @@ set backspace=indent,eol,start
 "set listchars=tab:¦\ ,eol:¬,trail:-,nbsp:%,extends:>,precedes:<
 set listchars=eol:¬,tab:▸\ 
 set fillchars=vert:\ ,fold:\ ,diff:\
-set t_Co=256
+
+" Remap code completion to Ctrl+Space
+inoremap <C-Space> <C-n>
 
 " like Emacs on InsertMode
 imap <C-k> <right><ESC><S-d>a
@@ -82,8 +83,8 @@ imap <C-a>  <Home>
 imap <C-e>  <End>
 imap <C-b>  <Left>
 imap <C-f>  <Right>
-imap <C-p>  <Up>
-imap <C-n>  <Down>
+inoremap <C-p>  <Up>
+inoremap <C-n>  <Down>
 
 " like Emacs on CommandMode
 cnoremap <C-a> <Home>
