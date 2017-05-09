@@ -6,6 +6,7 @@ set rtp+=~/.fzf
 call vundle#rc()
 
 Plugin 'itchyny/lightline.vim'
+Plugin 'taohex/lightline-buffer'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'plasticboy/vim-markdown'
@@ -34,30 +35,33 @@ filetype indent on
 syntax enable
 
 if has('termguicolors')
-    set termguicolors
-    colorscheme base16-navy
-    set background=dark
-    set t_Co=256
+  set termguicolors
+  colorscheme base16-navy
+  set background=dark
+  set t_Co=256
 else
-    colorscheme molokai
-    set t_Co=256
-    let g:molokai_original = 1
-    let g:rehash256 = 1
+  colorscheme molokai
+  set t_Co=256
+  let g:molokai_original = 1
+  let g:rehash256 = 1
 endif
 
 set laststatus=2
 set showtabline=2
 set noshowmode
 
-set hidden
 set noundofile
 set nobackup
 set noswapfile
+
+set hidden
 set wrap
-set tabstop=4
+
+set tabstop=2
+set shiftwidth=2
 set autoindent
 set expandtab
-set shiftwidth=4
+
 set title
 set mouse=a
 set number
@@ -77,6 +81,7 @@ set listchars=eol:¬,tab:▸\
 set fillchars=vert:\ ,fold:\ ,diff:\
 
 " like Emacs on InsertMode
+
 imap <C-k> <right><ESC><S-d>a
 imap <C-y> <ESC>pi
 imap <C-d> <Del>
@@ -102,11 +107,73 @@ cnoremap <M-f> <S-Right>
 " alias ESC
 imap <C-c> <ESC>
 
-" NERDTree
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
+" lightline
+let g:lightline = {
+      \ 'colorscheme': 'powerline',
+      \ }
+
+set hidden  " allow buffer switching without saving
+set showtabline=2  " always show tabline
+
+" use lightline-buffer in lightline
+let g:lightline = {
+	\ 'tabline': {
+		\ 'left': [ [ 'bufferinfo' ], [ 'bufferbefore', 'buffercurrent', 'bufferafter' ], ],
+		\ 'right': [ [ 'close' ], ],
+		\ },
+	\ 'component_expand': {
+		\ 'buffercurrent': 'lightline#buffer#buffercurrent2',
+		\ },
+	\ 'component_type': {
+		\ 'buffercurrent': 'tabsel',
+		\ },
+	\ 'component_function': {
+		\ 'bufferbefore': 'lightline#buffer#bufferbefore',
+		\ 'bufferafter': 'lightline#buffer#bufferafter',
+		\ 'bufferinfo': 'lightline#buffer#bufferinfo',
+		\ },
+	\ }
+
+" remap arrow keys
+nnoremap <Left> :bprev<CR>
+nnoremap <Right> :bnext<CR>
+
+" lightline-buffer ui settings
+" replace these symbols with ascii characters if your environment does not support unicode
+let g:lightline_buffer_logo = '❯ '
+let g:lightline_buffer_readonly_icon = '✤'
+let g:lightline_buffer_modified_icon = '◉'
+let g:lightline_buffer_git_icon = '✹'
+let g:lightline_buffer_ellipsis_icon = '..'
+let g:lightline_buffer_expand_left_icon = '‹ '
+let g:lightline_buffer_expand_right_icon = ' ›'
+let g:lightline_buffer_active_buffer_left_icon = ''
+let g:lightline_buffer_active_buffer_right_icon = ''
+let g:lightline_buffer_separator_icon = ' '
+
+" lightline-buffer function settings
+let g:lightline_buffer_show_bufnr = 1
+let g:lightline_buffer_rotate = 0
+let g:lightline_buffer_fname_mod = ':t'
+let g:lightline_buffer_excludes = ['vimfiler']
+
+let g:lightline_buffer_maxflen = 30
+let g:lightline_buffer_maxfextlen = 3
+let g:lightline_buffer_minflen = 16
+let g:lightline_buffer_minfextlen = 3
+let g:lightline_buffer_reservelen = 20
 
 " fzf
+set rtp+=~/.fzf
 nnoremap <silent><C-p> :FZF<CR>
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
+" NERDTree
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
@@ -115,28 +182,4 @@ let g:vim_markdown_folding_disabled = 1
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile Fastfile set filetype=ruby
 au BufRead,BufNewFile Podfile set filetype=ruby
-
-" vim-indent-guides
-let g:indent_guides_guide_size = 1
-let g:indent_guides_color_change_percent = 3
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 0
-
-" quickrun
-let g:quickrun_config = {'*': {'split': ''}}
-set splitbelow
-let g:quickrun_config['swift'] = {
-\ 'command': 'swift',
-\ 'exec': '%c %o %s',
-\}
-
-command! -nargs=? Jq call s:Jq(<f-args>)
-function! s:Jq(...)
-    if 0 == a:0
-        let l:arg = "."
-    else
-        let l:arg = a:1
-    endif
-    execute "%! jq \"" . l:arg . "\""
-endfunction
 
