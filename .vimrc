@@ -11,13 +11,10 @@ Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'thinca/vim-quickrun'
-Plugin 'toyamarinyon/vim-swift'
 Plugin 'jonathanfilip/vim-lucius'
 Plugin 'fatih/vim-go'
 Plugin 'cfdrake/vim-carthage'
-Plugin 'mitsuse/autocomplete-swift'
 Plugin 'Shougo/NeoComplete'
-Plugin 'Keithbsmiley/swift.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'tomasr/molokai'
 Plugin 'scrooloose/nerdtree'
@@ -25,6 +22,7 @@ Plugin 'rhysd/vim-crystal'
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'bumaociyuan/vim-swift'
 
 filetype plugin indent on
 
@@ -107,32 +105,29 @@ cnoremap <M-f> <S-Right>
 " alias ESC
 imap <C-c> <ESC>
 
-" lightline
-let g:lightline = {
-      \ 'colorscheme': 'powerline',
-      \ }
-
 set hidden  " allow buffer switching without saving
 set showtabline=2  " always show tabline
 
+" lightline
 " use lightline-buffer in lightline
 let g:lightline = {
-	\ 'tabline': {
-		\ 'left': [ [ 'bufferinfo' ], [ 'bufferbefore', 'buffercurrent', 'bufferafter' ], ],
-		\ 'right': [ [ 'close' ], ],
-		\ },
-	\ 'component_expand': {
-		\ 'buffercurrent': 'lightline#buffer#buffercurrent2',
-		\ },
-	\ 'component_type': {
-		\ 'buffercurrent': 'tabsel',
-		\ },
-	\ 'component_function': {
-		\ 'bufferbefore': 'lightline#buffer#bufferbefore',
-		\ 'bufferafter': 'lightline#buffer#bufferafter',
-		\ 'bufferinfo': 'lightline#buffer#bufferinfo',
-		\ },
-	\ }
+\ 'colorscheme': 'powerline',
+\ 'tabline': {
+	\ 'left': [ [ 'bufferinfo' ], [ 'bufferbefore', 'buffercurrent', 'bufferafter' ], ],
+	\ 'right': [ [ 'close' ], ],
+	\ },
+\ 'component_expand': {
+	\ 'buffercurrent': 'lightline#buffer#buffercurrent2',
+	\ },
+\ 'component_type': {
+	\ 'buffercurrent': 'tabsel',
+	\ },
+\ 'component_function': {
+	\ 'bufferbefore': 'lightline#buffer#bufferbefore',
+	\ 'bufferafter': 'lightline#buffer#bufferafter',
+	\ 'bufferinfo': 'lightline#buffer#bufferinfo',
+	\ },
+\ }
 
 " remap arrow keys
 nnoremap <Left> :bprev<CR>
@@ -177,6 +172,7 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_new_list_item_indent = 2
 
 " Syntax
 au BufRead,BufNewFile *.md set filetype=markdown
