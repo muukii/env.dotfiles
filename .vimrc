@@ -50,7 +50,7 @@ set noshowmode
 
 set noundofile
 set nobackup
-set noswapfile
+"set noswapfile
 
 set hidden
 set wrap
@@ -75,9 +75,23 @@ set wildmode=longest:list,full
 set list
 set backspace=indent,eol,start
 "set listchars=tab:¦\ ,eol:¬,trail:-,nbsp:%,extends:>,precedes:<
+"set listchars=eol:¬,tab:▸\ 
 set listchars=eol:¬,tab:▸\ 
-set fillchars=vert:\ ,fold:\ ,diff:\
+"set fillchars=vert:\ ,fold:\ ,diff:\
+"
+" Fillchars Options {{{1
+set fillchars=stl:\ 
+set fillchars+=stlnc:\ 
+set fillchars+=vert:\|
+set fillchars+=fold:\⋅
+set fillchars+=diff:-
 
+" Folding {{{1
+"
+"set foldopen=all
+set foldenable
+
+" keybind {{{1
 " like Emacs on InsertMode
 
 imap <C-k> <right><ESC><S-d>a

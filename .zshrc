@@ -55,7 +55,7 @@ setopt prompt_sp
 # load $HOME/.zsh/*
 if [ -d $HOME/.zsh ]; then
   for i in `ls -1 $HOME/.zsh`; do
-    echo "Load $i"
+    echo "📦  Load $i"
     src=$HOME/.zsh/$i; [ -f $src ] && . $src
   done
 fi
@@ -163,3 +163,6 @@ PS2="%_> "
 SPROMPT="zsh: Did you mean: %{[4m[31m%}%r%{[14m[0m%} [nyae]? "
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# added by travis gem
+[ -f /Users/muukii/.travis/travis.sh ] && source /Users/muukii/.travis/travis.sh

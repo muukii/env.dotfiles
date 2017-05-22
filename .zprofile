@@ -48,3 +48,5 @@ if [ -d "$HOME/.rbenv" ]; then
     which rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
   fi
 fi
+
+export PATH="$HOME/.cargo/bin:$PATH"

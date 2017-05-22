@@ -2,6 +2,7 @@
 	name = muukii
 	email = m@muukii.me
 	signingkey = 5F608044
+	useConfigOnly = true
 [merge]
     tool = vimdiff
 	ff = false
