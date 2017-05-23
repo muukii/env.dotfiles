@@ -3,9 +3,6 @@ alias dl='docker ps -l -q'
 alias da='docker ps -a'
 alias dat='docker attach `dl`'
 
-## bear
-alias bear='~/dotfiles/scripts/bear.swift'
-
 alias ce='cd ../'
 alias ls='ls -F -G'
 alias la='ls -a -G'
