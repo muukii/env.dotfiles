@@ -12,13 +12,14 @@ m_help() {
   swift        Launch Swift Development for Ubuntu on Docker
   urlencode    URL encode <input>
   urldecode    URL decode <input>
+  set_tracking Set current branch as tracking branch
 
   edit         Edit m
   "
 }
 
 m_w() {
-  cd `git worktree list | fzf | cut -d " " -f 1`
+  cd `set -o pipefail && git worktree list | fzf | cut -d " " -f 1`
 }
 
 m_check_required_commands() {
@@ -47,6 +48,10 @@ m_url_encode() {
   echo $1 | nkf -WwMQ | tr = %
 }
 
+m_set_remote_upstream_current_branch() {
+  git branch --set-upstream-to=origin/$(git rev-parse --abbrev-ref HEAD) $(git rev-parse --abbrev-ref HEAD)
+}
+
 m() {
   local command="$1"
   case "${command}" in
@@ -70,6 +75,9 @@ m() {
       ;;
     "urldecode" )
       m_url_decode $2
+      ;;
+    "set_tracking" )
+      m_set_remote_upstream_current_branch
       ;;
     * )
       echo "Command not found '$@'"
