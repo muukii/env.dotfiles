@@ -20,7 +20,7 @@ module.exports = {
     backgroundColor: '#141820',
 
     // border color (window, tabs)
-    borderColor: '#141820',
+    borderColor: '#202633',
 
     // custom css to embed in the main window
     css: '',
@@ -31,26 +31,26 @@ module.exports = {
     // custom padding (css format, i.e.: `top right bottom left`)
     padding: '12px 14px',
 
-    // https://coolors.co/e04d69-5b677a-6d738e-8dd1e7-141820
+    // https://coolors.co/e04d69-e0a24c-65759b-8ecde2-141820
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide
     // an array here instead of a color map object
     colors: {
       black: '#000000',
       red: '#E04D69',
-      green: '#5B677A',
-      yellow: '#5B677A',
-      blue: '#6D738E',
+      green: '#656F9B',
+      yellow: '#E0A24C',
+      blue: '#656F9B',
       magenta: '#E04D69',
-      cyan: '#8DD1E7',
+      cyan: '#8ECDE2',
       white: '#E0E0E0',
       lightBlack: '#000000',
       lightRed: '#E04D69',
-      lightGreen: '#5B677A',
-      lightYellow: '#5B677A',
-      lightBlue: '#6D738E',
+      lightGreen: '#656F9B',
+      lightYellow: '#E0A24C',
+      lightBlue: '#656F9B',
       lightMagenta: '#E04D69',
-      lightCyan: '#8DD1E7',
+      lightCyan: '#8ECDE2',
       lightWhite: '#ffffff'
     },
 
