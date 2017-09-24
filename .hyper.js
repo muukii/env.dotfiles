@@ -8,7 +8,7 @@ module.exports = {
     fontFamily: 'Source Code Pro, monospace',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-    cursorColor: 'rgba(249, 227, 29, 0.75)',
+    cursorColor: 'rgba(255, 255, 255, 0.75)',
 
     // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
     cursorShape: 'BLOCK',
@@ -17,10 +17,10 @@ module.exports = {
     foregroundColor: '#fff',
 
     // terminal background color
-    backgroundColor: '#0F1A20',
+    backgroundColor: '#141820',
 
     // border color (window, tabs)
-    borderColor: '#333',
+    borderColor: '#141820',
 
     // custom css to embed in the main window
     css: '',
@@ -31,7 +31,7 @@ module.exports = {
     // custom padding (css format, i.e.: `top right bottom left`)
     padding: '12px 14px',
 
-    // https://coolors.co/e04d69-5b677a-6d738e-8dd1e7-0f1a20
+    // https://coolors.co/e04d69-5b677a-6d738e-8dd1e7-141820
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide
     // an array here instead of a color map object
@@ -84,7 +84,8 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-      
+    'hyperlinks',
+    'hyper-statusline',
   ],
 
   // in development, you can create a directory under
