@@ -1,10 +1,11 @@
 module.exports = {
   config: {
     // default font size in pixels for all tabs
-    fontSize: 11,
+    fontSize: 13,
+    fontWeight: 300,
 
     // font family with optional fallbacks
-    fontFamily: '"RobotoMono-Medium", monospace',
+    fontFamily: 'Source Code Pro, monospace',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     cursorColor: 'rgba(249, 227, 29, 0.75)',
@@ -16,7 +17,7 @@ module.exports = {
     foregroundColor: '#fff',
 
     // terminal background color
-    backgroundColor: '#1E2229',
+    backgroundColor: '#0F1A20',
 
     // border color (window, tabs)
     borderColor: '#333',
@@ -30,24 +31,25 @@ module.exports = {
     // custom padding (css format, i.e.: `top right bottom left`)
     padding: '12px 14px',
 
+    // https://coolors.co/e04d69-5b677a-6d738e-8dd1e7-0f1a20
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide
     // an array here instead of a color map object
     colors: {
       black: '#000000',
-      red: '#E14258',
-      green: '#FF895C',
-      yellow: '#FF895C',
-      blue: '#6A86BD',
-      magenta: '#E14258',
+      red: '#E04D69',
+      green: '#5B677A',
+      yellow: '#5B677A',
+      blue: '#6D738E',
+      magenta: '#E04D69',
       cyan: '#8DD1E7',
-      white: '#d0d0d0',
-      lightBlack: '#808080',
-      lightRed: '#E14258',
-      lightGreen: '#FF895C',
-      lightYellow: '#FF895C',
-      lightBlue: '#6A86BD',
-      lightMagenta: '#E14258',
+      white: '#E0E0E0',
+      lightBlack: '#000000',
+      lightRed: '#E04D69',
+      lightGreen: '#5B677A',
+      lightYellow: '#5B677A',
+      lightBlue: '#6D738E',
+      lightMagenta: '#E04D69',
       lightCyan: '#8DD1E7',
       lightWhite: '#ffffff'
     },

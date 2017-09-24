@@ -7,12 +7,13 @@ m_help() {
   
   ${version}
 
-  ch           git checkout with fzf
-  w            git worktree with fzf
-  swift        Launch Swift Development for Ubuntu on Docker
-  urlencode    URL encode <input>
-  urldecode    URL decode <input>
-  set_tracking Set current branch as tracking branch
+  ch             git checkout with fzf
+  w              git worktree with fzf
+  swift          Launch Swift Development for Ubuntu on Docker
+  urlencode      URL encode <input>
+  urldecode      URL decode <input>
+  set_tracking   Set current branch as tracking branch
+  install_simapp Install simulator application
 
   edit         Edit m
   "
@@ -52,6 +53,39 @@ m_set_remote_upstream_current_branch() {
   git branch --set-upstream-to=origin/$(git rev-parse --abbrev-ref HEAD) $(git rev-parse --abbrev-ref HEAD)
 }
 
+m_install_simapp() {
+
+  device_id=$1
+  file_path=$2
+
+  if [[ -z "$device_id" ]]; then
+    echo 'Required device id in arg1'
+    break
+  fi
+
+  if [[ -z "$file_path" ]]; then
+    echo 'Required file path in arg2'
+    break
+  fi
+
+  echo "Installing..."
+
+  result=$(xcrun simctl list devices | grep ${device_id} | grep Booted | wc -l | awk '{print $1}')
+  if [ $result = 0 ];then
+    xcrun simctl boot ${device_id}
+  fi
+
+  xcrun simctl install ${device_id} ${file_path}
+
+  plutil -p "${file_path}/Info.plist"
+
+  open $(xcode-select -p)/Applications/Simulator.app
+
+  echo ""
+
+  echo "Installed app to device(${device_id})"
+}
+
 m() {
   local command="$1"
   case "${command}" in
@@ -78,6 +112,9 @@ m() {
       ;;
     "set_tracking" )
       m_set_remote_upstream_current_branch
+      ;;
+    "install_simapp" )
+      m_install_simapp $2 $3
       ;;
     * )
       echo "Command not found '$@'"
