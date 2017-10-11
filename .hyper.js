@@ -86,6 +86,7 @@ module.exports = {
   plugins: [
     'hyperlinks',
     'hyper-statusline',
+    'hyper-tab-icons',
   ],
 
   // in development, you can create a directory under

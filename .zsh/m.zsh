@@ -14,13 +14,21 @@ m_help() {
   urldecode      URL decode <input>
   set_tracking   Set current branch as tracking branch
   install_simapp Install simulator application
+  delete_branch  Delete branch intereactive with fzf
 
   edit         Edit m
   "
 }
 
+m_git_branch_delete_with_fzf() {
+  git branch -D $(git branch | fzf -m)
+}
+
 m_w() {
-  cd `set -o pipefail && git worktree list | fzf | cut -d " " -f 1`
+  dir=$(git worktree list | fzf | cut -d " " -f 1)
+  if [ -n "$dir" ]; then
+    cd $dir
+  fi
 }
 
 m_check_required_commands() {
@@ -38,7 +46,7 @@ m_edit() {
 }
 
 m_docker_swift_on_curren_directory() {
-  docker run --rm -it --name swift -v $PWD:/local/dev --workdir "/local/dev" swift:3.1 /bin/bash
+  docker run --rm -it --name swift -v $PWD:/local/dev --workdir "/local/dev" swiftdocker/swift:latest /bin/bash
 }
 
 m_url_decode() {
@@ -115,6 +123,9 @@ m() {
       ;;
     "install_simapp" )
       m_install_simapp $2 $3
+      ;;
+    "delete_branch" )
+      m_git_branch_delete_with_fzf
       ;;
     * )
       echo "Command not found '$@'"
