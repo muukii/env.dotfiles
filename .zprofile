@@ -49,4 +49,10 @@ if [ -d "$HOME/.rbenv" ]; then
   fi
 fi
 
+# setup xcenv
+if [ -d "$HOME/.xcenv" ]; then
+  export PATH="$HOME/.xcenv/bin:$PATH"
+  eval "$(xcenv init -)"
+fi
+
 export PATH="$HOME/.cargo/bin:$PATH"
