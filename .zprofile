@@ -13,14 +13,6 @@ if [ -d "$HOME/.goenv" ]; then
   fi
 fi
 
-# setup nvm
-if [ -d "$HOME/.nvm" ]; then
-  export NVM_DIR="$HOME/.nvm"
-  if [[ ":${PATH}:" != *:"${NVM_DIR}/bin":* ]]; then
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-  fi
-fi
-
 # setup pyenv
 if [ -d "$HOME/.pyenv" ]; then
   export PYTHON_CONFIGURE_OPTS="--enable-shared"
@@ -49,10 +41,12 @@ if [ -d "$HOME/.rbenv" ]; then
   fi
 fi
 
-# setup xcenv
-if [ -d "$HOME/.xcenv" ]; then
-  export PATH="$HOME/.xcenv/bin:$PATH"
-  eval "$(xcenv init -)"
+# setup nvm
+if [ -d "$HOME/.nvm" ]; then
+  export NVM_DIR="$HOME/.nvm"
+  if [[ ":${PATH}:" != *:"${NVM_DIR}/bin":* ]]; then
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+  fi
 fi
 
 export PATH="$HOME/.cargo/bin:$PATH"

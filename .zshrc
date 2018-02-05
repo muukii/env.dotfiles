@@ -146,7 +146,6 @@ function precmd ()
 #local
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-DEFAULT='❯❯❯'
 SUCCESS='$'
 ERROR='$'
 
@@ -158,9 +157,7 @@ fi
 PS1="%{[0m%}
 %{[37m%}\$(git_status)%{[0m%}
 %{[31m%}${APPEND}%}
-%{[31m%}${DEFAULT} [%*]%}
-%{[34m%}${DEFAULT} %n@%M%{[0m%}
-%{[34m%}${DEFAULT} %~%{[0m%}
+%{[34m%}❯ %n@%M%{[0m%} %{[33m%}❯ %~%{[0m%}
 %(?|%{[36m%}${SUCCESS}|%{[31m%}${ERROR})%{[35m%}\$(parse_git_branch) %{[0m%}"
 
 #%{${DEFAULT} %{[33m%}%~%{[0m%}
