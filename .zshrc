@@ -53,22 +53,6 @@ setopt prompt_cr
 # visible CR when output CR by prompt_cr
 setopt prompt_sp
 
-# load $HOME/.zsh/*
-if [ -d $HOME/.zsh ]; then
-  for i in `ls -1 $HOME/.zsh`; do
-    echo "📦  Load $i"
-    src=$HOME/.zsh/$i; [ -f $src ] && . $src
-  done
-fi
-
-# load $HOME/.zsh_local/*
-if [ -d $HOME/.zsh_local ]; then
-  for i in `ls -1 $HOME/.zsh_local`; do
-    echo "📍  Load $i"
-    src=$HOME/.zsh_local/$i; [ -f $src ] && . $src
-  done
-fi
-
 # completion settings
 autoload -Uz compinit
 compinit -u
@@ -131,6 +115,10 @@ setopt print_eight_bit
 setopt extended_glob
 setopt globdots
 
+#local
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+# brew
 brew=`which brew 2>&1`
 if [[ $? == 0 ]]; then
   . `brew --prefix`/etc/profile.d/z.sh
@@ -143,8 +131,21 @@ function precmd ()
   fi
 }
 
-#local
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+# load $HOME/.zsh/*
+if [ -d $HOME/.zsh ]; then
+  for i in `ls -1 $HOME/.zsh`; do
+    echo "📦  Load $i"
+    src=$HOME/.zsh/$i; [ -f $src ] && . $src
+  done
+fi
+
+# load $HOME/.zsh_local/*
+if [ -d $HOME/.zsh_local ]; then
+  for i in `ls -1 $HOME/.zsh_local`; do
+    echo "📍  Load $i"
+    src=$HOME/.zsh_local/$i; [ -f $src ] && . $src
+  done
+fi
 
 SUCCESS='$'
 ERROR='$'
@@ -155,10 +156,9 @@ if [ -n "${ON_DOCKER}" ]; then
 fi
 # PROMPT1
 PS1="%{[0m%}
-%{[37m%}\$(git_status)%{[0m%}
 %{[31m%}${APPEND}%}
 %{[34m%}❯ %n@%M%{[0m%} %{[33m%}❯ %~%{[0m%}
-%(?|%{[36m%}${SUCCESS}|%{[31m%}${ERROR})%{[35m%}\$(parse_git_branch) %{[0m%}"
+%(?|%{[36m%}${SUCCESS}|%{[31m%}${ERROR})%{[35m%}\$(git_status)\$(parse_git_branch) %{[0m%}"
 
 #%{${DEFAULT} %{[33m%}%~%{[0m%}
 
@@ -172,11 +172,3 @@ SPROMPT="zsh: Did you mean: %{[4m[31m%}%r%{[14m[0m%} [nyae]? "
 
 # added by travis gem
 [ -f /Users/muukii/.travis/travis.sh ] && source /Users/muukii/.travis/travis.sh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# tabtab source for electron-forge package
-# uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[[ -f /Users/muukii/Downloads/electron-vue-typescript-starter-master/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/muukii/Downloads/electron-vue-typescript-starter-master/node_modules/tabtab/.completions/electron-forge.zsh

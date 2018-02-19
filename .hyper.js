@@ -2,10 +2,9 @@ module.exports = {
   config: {
     // default font size in pixels for all tabs
     fontSize: 13,
-    fontWeight: 300,
 
     // font family with optional fallbacks
-    fontFamily: 'Source Code Pro, monospace',
+    fontFamily: 'Source Code Pro',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     cursorColor: 'rgba(255, 255, 255, 0.75)',
@@ -17,7 +16,7 @@ module.exports = {
     foregroundColor: '#fff',
 
     // terminal background color
-    backgroundColor: '#0C141A',
+    backgroundColor: '#0E1419',
 
     // border color (window, tabs)
     borderColor: '#202633',
@@ -31,26 +30,32 @@ module.exports = {
     // custom padding (css format, i.e.: `top right bottom left`)
     padding: '12px 14px',
 
-    // https://coolors.co/e04d69-e0a24c-65759b-8ecde2-141820
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide
     // an array here instead of a color map object
     colors: {
       black: '#000000',
-      red: '#E04D69',
-      green: '#65759B',
-      yellow: '#E0A24C',
-      blue: '#65759B',
-      magenta: '#E04D69',
-      cyan: '#8ECDE2',
-      white: '#E0E0E0',
       lightBlack: '#000000',
-      lightRed: '#E04D69',
-      lightGreen: '#65759B',
-      lightYellow: '#E0A24C',
+      
+      red: '#EE627B',
+      lightRed: '#EE627B',
+      
+      green: '#E7766A',
+      lightGreen: '#E7766A',
+      
+      yellow: '#F0A96E',
+      lightYellow: '#E3C593',
+      
+      blue: '#65759B',
       lightBlue: '#65759B',
-      lightMagenta: '#E04D69',
-      lightCyan: '#8ECDE2',
+      
+      magenta: '#C54684',
+      lightMagenta: '#C54684',
+      
+      cyan: '#90C6E2',
+      lightCyan: '#90C6E2',
+      
+      white: '#E0E0E0',
       lightWhite: '#ffffff'
     },
 
@@ -76,6 +81,8 @@ module.exports = {
 
     // for advanced config flags please refer to https://hyperterm.org/#cfg
   },
+
+  termCSS: 'x-row {font-weight: 600}',
 
   // a list of plugins to fetch and install from npm
   // format: [@org/]project[#version]

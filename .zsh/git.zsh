@@ -3,7 +3,12 @@ function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
 function git_status() {
   local local_status=$(git status -s 2> /dev/null)
-  echo $local_status
+  if [[ -z $local_status ]]; then
+    echo ""
+  else
+    echo " *"
+  fi
+
 }
 
 function parse_git_branch() {
