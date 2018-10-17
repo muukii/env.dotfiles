@@ -1,10 +1,10 @@
 [user]
-	name = muukii
-	email = m@muukii.me
+	name = Muukii
+	email = muukii.app@gmail.com
 	signingkey = 5F608044
 	useConfigOnly = true
 [merge]
-    tool = vimdiff
+  tool = vimdiff
 	ff = false
 [core]
 	excludesfile = /Users/Muukii/.gitignore_global

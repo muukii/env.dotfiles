@@ -1,7 +1,7 @@
 module.exports = {
   config: {
     // default font size in pixels for all tabs
-    fontSize: 13,
+    fontSize: 14,
 
     // font family with optional fallbacks
     fontFamily: 'Source Code Pro',
@@ -16,10 +16,10 @@ module.exports = {
     foregroundColor: '#fff',
 
     // terminal background color
-    backgroundColor: '#0E1419',
+    backgroundColor: '#0E1219',
 
     // border color (window, tabs)
-    borderColor: '#202633',
+    borderColor: '#0E1219',
 
     // custom css to embed in the main window
     css: '',
@@ -35,26 +35,26 @@ module.exports = {
     // an array here instead of a color map object
     colors: {
       black: '#000000',
-      lightBlack: '#000000',
-      
+      lightBlack: '#ABABAB',
+
       red: '#EE627B',
       lightRed: '#EE627B',
-      
+
       green: '#E7766A',
       lightGreen: '#E7766A',
-      
+
       yellow: '#F0A96E',
       lightYellow: '#E3C593',
-      
+
       blue: '#65759B',
       lightBlue: '#65759B',
-      
+
       magenta: '#C54684',
       lightMagenta: '#C54684',
-      
+
       cyan: '#90C6E2',
       lightCyan: '#90C6E2',
-      
+
       white: '#E0E0E0',
       lightWhite: '#ffffff'
     },
@@ -82,7 +82,7 @@ module.exports = {
     // for advanced config flags please refer to https://hyperterm.org/#cfg
   },
 
-  termCSS: 'x-row {font-weight: 600}',
+  termCSS: 'x-row {font-weight: 400}',
 
   // a list of plugins to fetch and install from npm
   // format: [@org/]project[#version]
