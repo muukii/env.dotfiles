@@ -31,3 +31,4 @@ export NVM_DIR="/Users/Muukii/.nvm"
 
 # added by travis gem
 [ -f /Users/muukii/.travis/travis.sh ] && source /Users/muukii/.travis/travis.sh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

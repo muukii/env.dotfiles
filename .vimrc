@@ -1,7 +1,7 @@
 " vundle
 set nocompatible
 filetype off
-set rtp+=~/.vim/vundle.git
+set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=~/.fzf
 call vundle#rc()
 
