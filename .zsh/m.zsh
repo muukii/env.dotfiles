@@ -7,14 +7,15 @@ m_help() {
   
   ${version}
 
-  ch             git checkout with fzf
-  w              git worktree with fzf
-  swift          Launch Swift Development for Ubuntu on Docker
-  urlencode      URL encode <input>
-  urldecode      URL decode <input>
-  set_tracking   Set current branch as tracking branch
-  install_simapp Install simulator application
-  delete_branch  Delete branch intereactive with fzf
+  ch               git checkout with fzf
+  w                git worktree with fzf
+  swift            Launch Swift Development for Ubuntu on Docker
+  urlencode        URL encode <input>
+  urldecode        URL decode <input>
+  set_tracking     Set current branch as tracking branch
+  install_simapp   Install simulator application
+  delete_branch    Delete branch intereactive with fzf
+  create_worktree  Create worktree
 
   edit         Edit m
   "
@@ -59,6 +60,14 @@ m_url_encode() {
 
 m_set_remote_upstream_current_branch() {
   git branch --set-upstream-to=origin/$(git rev-parse --abbrev-ref HEAD) $(git rev-parse --abbrev-ref HEAD)
+}
+
+m_create_worktree() {
+  for i in `seq 1 $1`; do
+    name=space$i
+    git branch $name
+    git worktree add ./worktree/$name $name
+  done
 }
 
 m_install_simapp() {
@@ -123,6 +132,9 @@ m() {
       ;;
     "install_simapp" )
       m_install_simapp $2 $3
+      ;;
+    "create_worktree" )
+      m_create_worktree $2
       ;;
     "delete_branch" )
       m_git_branch_delete_with_fzf
