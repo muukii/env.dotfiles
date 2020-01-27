@@ -172,3 +172,5 @@ SPROMPT="zsh: Did you mean: %{[4m[31m%}%r%{[14m[0m%} [nyae]? "
 
 # added by travis gem
 [ -f /Users/muukii/.travis/travis.sh ] && source /Users/muukii/.travis/travis.sh
+
+#[[ -n $(which starship) ]] && eval $(starship init zsh)

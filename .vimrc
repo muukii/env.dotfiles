@@ -32,17 +32,10 @@ filetype indent on
 " Syntax
 syntax enable
 
-if has('termguicolors')
-  set termguicolors
-  colorscheme base16-navy
-  set background=dark
-  set t_Co=256
-else
-  colorscheme molokai
-  set t_Co=256
-  let g:molokai_original = 1
-  let g:rehash256 = 1
-endif
+colorscheme molokai
+set t_Co=256
+let g:molokai_original = 1
+let g:rehash256 = 1
 
 set laststatus=2
 set showtabline=2

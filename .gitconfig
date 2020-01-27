@@ -7,7 +7,7 @@
   tool = vimdiff
 	ff = false
 [core]
-	excludesfile = /Users/Muukii/.gitignore_global
+	excludesfile = /Users/muukii/.gitignore_global
 	editor = vim
 [color]
 	ui = auto
@@ -139,3 +139,12 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[url "git@github.com"]
+	insteadOf = https://github.com/:

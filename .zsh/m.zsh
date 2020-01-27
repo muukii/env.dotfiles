@@ -26,10 +26,13 @@ m_git_branch_delete_with_fzf() {
 }
 
 m_w() {
-  dir=$(git worktree list | fzf | cut -d " " -f 1)
-  if [ -n "$dir" ]; then
-    cd $dir
+  branch=$(git worktree list | perl -pe 's/ +/ /g' | cut -d " " -f 3 | fzf)
+  if [ -z "$branch" ]; then 
+    return 1
   fi
+  to_grep=$(echo $branch | perl -pe 's/\[/\\[/' | perl -pe 's/\]/\\]/')
+  dir=$(git worktree list | grep $to_grep | perl -pe 's/ +/ /g' | cut -d " " -f 1)
+  cd $dir
 }
 
 m_check_required_commands() {

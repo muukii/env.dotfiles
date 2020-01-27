@@ -1,7 +1,7 @@
 module.exports = {
   config: {
     // default font size in pixels for all tabs
-    fontSize: 14,
+    fontSize: 16,
 
     // font family with optional fallbacks
     fontFamily: 'Source Code Pro',
@@ -82,7 +82,7 @@ module.exports = {
     // for advanced config flags please refer to https://hyperterm.org/#cfg
   },
 
-  termCSS: 'x-row {font-weight: 400}',
+  termCSS: 'x-row {font-weight: 600}',
 
   // a list of plugins to fetch and install from npm
   // format: [@org/]project[#version]
