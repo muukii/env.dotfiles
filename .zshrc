@@ -1,4 +1,7 @@
 echo "📦  Load zshrc"
+
+eval "$(starship init zsh)"
+
 # vim:set fdm=marker:
 # vim:set ts=8 sts=2 sw=2 tw=0:
 
@@ -174,3 +177,5 @@ SPROMPT="zsh: Did you mean: %{[4m[31m%}%r%{[14m[0m%} [nyae]? "
 [ -f /Users/muukii/.travis/travis.sh ] && source /Users/muukii/.travis/travis.sh
 
 #[[ -n $(which starship) ]] && eval $(starship init zsh)
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

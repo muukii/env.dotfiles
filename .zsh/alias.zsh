@@ -3,7 +3,10 @@ alias dl='docker ps -l -q'
 alias da='docker ps -a'
 alias dat='docker attach `dl`'
 
-alias ce='cd ../'
+if [[ -n `which exa` ]]; then
+  alias exa='exa -F -G'
+fi
+
 alias ls='ls -F -G'
 alias la='ls -a -G'
 alias ll='ls -la -G'
@@ -22,9 +25,3 @@ alias ghci="stack ghci"
 alias runghc="stack runghc"
 alias runhaskell="stack runghc"
 
-# alias for vim
-alias vi='vim -u $HOME/.virc'
-sw_vers=`which sw_vers 2>&1`
-if [[ $? == 0 ]]; then
-    alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-fi
