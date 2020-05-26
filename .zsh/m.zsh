@@ -45,6 +45,10 @@ m_ch() {
   git checkout `git branch -a | fzf | sed 's#remotes/origin/##'`
 }
 
+m_patch() {
+  git ch -b "muukii/patch-$(date '+%s')" && git add . && git commit -m 'Patch' && gh pr create -B master -w
+}
+
 m_edit() {
   vim ${HOME}/.zsh/m.zsh
 }
@@ -117,6 +121,9 @@ m() {
       ;;
     "w" )
       m_w
+      ;;
+    "patch" )
+      m_patch
       ;;
     "edit" )
       m_edit

@@ -1,7 +1,7 @@
 [user]
 	name = Muukii
 	email = muukii.app@gmail.com
-	signingkey = 5F608044
+	signingkey = A02A8A3B
 	useConfigOnly = true
 [merge]
   tool = vimdiff
@@ -131,14 +131,9 @@
 [mergetool]
 	keepBackup = true
 [commit]
-	gpgsign = false
+	gpgsign = true
 [github]
 	user = muukii
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
