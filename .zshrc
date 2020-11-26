@@ -179,3 +179,10 @@ SPROMPT="zsh: Did you mean: %{[4m[31m%}%r%{[14m[0m%} [nyae]? "
 #[[ -n $(which starship) ]] && eval $(starship init zsh)
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# rbenv
+eval "$(rbenv init -)"
+
+# fastlane locales
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8

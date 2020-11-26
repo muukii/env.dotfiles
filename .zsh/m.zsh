@@ -46,7 +46,9 @@ m_ch() {
 }
 
 m_patch() {
-  git ch -b "muukii/patch-$(date '+%s')" && git add . && git commit -m 'Patch' && gh pr create -B master -w
+  base=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
+  echo Make PR to $base
+  git switch -c "muukii/patch-$(date '+%s')" && git add . && git commit -m 'Patch' && gh pr create -B $base -w
 }
 
 m_edit() {
