@@ -1,8 +1,6 @@
 [user]
 	name = Muukii
 	email = muukii.app@gmail.com
-	signingkey = A02A8A3B
-	useConfigOnly = true
 [merge]
   tool = vimdiff
 	ff = false
@@ -131,7 +129,7 @@
 [mergetool]
 	keepBackup = true
 [commit]
-	gpgsign = true
+	gpgsign = false
 [github]
 	user = muukii
 [difftool "sourcetree"]
